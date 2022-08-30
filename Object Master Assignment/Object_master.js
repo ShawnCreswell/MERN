@@ -52,3 +52,7 @@ console.log(pkmkOnlyName);
 // an array with just the names of pokémon with an id greater than 99
 const pkmkIdMoreThan99 = pokémon.filter(p => p.id > 99)
 console.log(pkmkIdMoreThan99);
+
+// an array with just the names of the pokémon whose only type is poison
+const pkmkNameWithPosionOnly = pokémon.filter(p => p.type === "poison")
+console.log(pkmkNameWithPosionOnly);
