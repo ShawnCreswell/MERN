@@ -45,3 +45,10 @@ const pkmkMoreThan1 = pokémon.filter( p => p.types[1])
 console.log(pkmkMoreThan1);
 
 // an array with just the names of the pokémon
+const pkmkOnlyName = pokémon.map(p => p.name)
+console.log(pkmkOnlyName);
+
+
+// an array with just the names of pokémon with an id greater than 99
+const pkmkIdMoreThan99 = pokémon.filter(p => p.id > 99)
+console.log(pkmkIdMoreThan99);
