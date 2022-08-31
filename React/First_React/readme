@@ -1,0 +1,4 @@
+into react folder
+npx create-react-app first-react
+cd first-react
+npm start
