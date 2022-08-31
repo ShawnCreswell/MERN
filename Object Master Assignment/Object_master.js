@@ -53,6 +53,14 @@ console.log(pkmkOnlyName);
 const pkmkIdMoreThan99 = pokémon.filter(p => p.id > 99)
 console.log(pkmkIdMoreThan99);
 
-// an array with just the names of the pokémon whose only type is poison
-const pkmkNameWithPosionOnly = pokémon.filter(p => p.type === "poison")
+//! an array with just the names of the pokémon whose only type is poison
+const pkmkNameWithPosionOnly = pokémon.filter(p => p.types[0] === "poison").map(p => p.name)
 console.log(pkmkNameWithPosionOnly);
+
+// an array containing just the first type of all the pokémon whose second type is "flying"
+const pkmkSecondTypeFlying = pokémon.filter(p => p.types[1] === "flying").map(p => p.types[0])
+console.log(pkmkSecondTypeFlying)
+
+// a count of the number of pokémon that are "normal" type
+const pkmnCount = pokémon.filter(p => p.types[0] === "normal").length
+console.log(pkmnCount)
