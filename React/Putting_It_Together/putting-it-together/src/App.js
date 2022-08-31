@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 
 import PersonCard from './components/PersonCard';
-import LightSwitch from './components/LighSwitch';
 
 function App() {
   return (

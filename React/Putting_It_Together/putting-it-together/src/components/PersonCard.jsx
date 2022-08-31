@@ -23,7 +23,7 @@ class PersonCard extends Component{
                 <h1>{lastName}, {firstName} </h1>
                 <h3>Age: {this.state.age} </h3>
                 <h3>Hair Color: {hairColor} </h3>
-                <button onClick={ incrementItem }>Click to increment by 1</button>
+                <button onClick={ incrementItem }>Birthday button for {firstName} {lastName}</button>
 
                 {/* <p>the light is currently {this.state.postion}</p>
                 <button onClick={ this.flipSwitch }>Birthday Button for {firstName} {lastName}</button> */}
