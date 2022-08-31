@@ -1,4 +1,7 @@
 into react folder
 npx create-react-app first-react
-cd first-react
+cd into name
 npm start
+
+to get node moduels back 
+npm install

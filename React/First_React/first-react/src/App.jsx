@@ -1,14 +1,15 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <fieldset>
-      <legend>App</legend>
-      <fieldset>
-        <legend>child</legend>
-      </fieldset>
-    </fieldset>
+    // <fieldset>
+    //   <legend>App</legend>
+      <Home />
+    //   <Footer />
+    // </fieldset>
   );
 }
 
