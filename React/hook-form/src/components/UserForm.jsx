@@ -43,9 +43,8 @@ const UserForm = (props) => {
                 <h4>Your Form Data</h4>
                 <div>Username: {username}</div>
                 <div>Email: {email}</div>
-                <div type="password">Password: {password}</div>
+                <div>Password: {password}</div>
                 <div>Confirm Password: {confirmPassword}</div>
-
             </div>
         </div>
         </> 
