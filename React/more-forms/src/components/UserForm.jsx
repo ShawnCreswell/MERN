@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useFormik } from 'formik';
 
 
 const UserForm = (props) => {
@@ -6,6 +7,28 @@ const UserForm = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    // const validate = (values) => {
+    //     const errors = {}
+        
+    //     if (!values.email){
+    //         errors.email = 'Required'
+        
+    //     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+    //         errors.email = 'Invalid email address'
+    //     }
+    //     return errors
+    // }
+
+    // const formik = useFormik({
+    //     initialValues: {
+    //         email: '',
+    //     },
+    //     validate,
+    //     onSubmit: (values) => {
+    //         alert(JSON.stringify(values, null, 2))
+    //     },
+    // })
 
 
     const createUser = (e) => {
@@ -35,11 +58,48 @@ const UserForm = (props) => {
         } 
     };
     const formMessageConfirmPasswordMatch = () => {
-        if (password != confirmPassword ) {
+        if (password !== confirmPassword ) {
             return "Password must match";
         } 
     };
 
+    const ValidateEmail = (inputText) => {
+        const mailformat = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+        if(inputText.value.match(mailformat))
+        {
+            alert("Valid email Address!");
+            document.form1.text1.focus();
+            return true
+        }
+        else
+        {
+
+            alert("You have entered an invalid email adress!")
+            document.form1.text1.focus();
+            return (false);
+        }
+    }
+
+    // const validateEmail = () => {
+    //     if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test($('#email').val())) { /* return true */ }
+    // };
+
+
+    const initialState = {
+        username: {
+            value: '',
+            error: null
+        }
+        // email: {
+        //     value: '',
+        //     error: null
+        // },
+        // password: {
+        //     value: '',
+        //     error: null
+        // }
+
+    };
 
 
     return (
@@ -50,10 +110,20 @@ const UserForm = (props) => {
                         <label>Username: </label>
                         <input className='form-control' type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
                         <p className='text-danger'>{formMessage()}</p>  
+                        {/* {initialState.username.error !== null && (
+                            <p className='text-danger'>{initialState.username.error}</p>
+                        )} */}
                     </div>
+                    {/* <div>
+                        <label for="email">Email Address: </label>
+                        <input id='email' name='email' className='form-control' type="email" onChange={formik.createUser} value={formik.values.email} />
+                        {formik.touched.email && formik.errors.email && (
+                            <span>{formik.errors.email}</span>
+                            )}
+                    </div> */}
                     <div>
-                        <label>Email Address: </label>
-                        <input className='form-control' type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
+                        <label for="email">Email Address: </label>
+                        <input id='email' name='email' className='form-control' type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
                         <p className='text-danger'>{formMessageEmail()}</p>  
                     </div>
                     <div>
