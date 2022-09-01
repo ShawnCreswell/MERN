@@ -1,155 +1,172 @@
 import React, { useState } from 'react';
-import { useFormik } from 'formik';
 
 
 const UserForm = (props) => {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [formState, setFormState] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+    // const [username, setUsername] = useState("");
+    const [usernameError, setUsernameError] = useState(null);
+    // const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState(null);
+    // const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState(null);
+    // const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState(null);
 
-    // const validate = (values) => {
-    //     const errors = {}
-        
-    //     if (!values.email){
-    //         errors.email = 'Required'
-        
-    //     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
-    //         errors.email = 'Invalid email address'
-    //     }
-    //     return errors
-    // }
-
-    // const formik = useFormik({
-    //     initialValues: {
-    //         email: '',
-    //     },
-    //     validate,
-    //     onSubmit: (values) => {
-    //         alert(JSON.stringify(values, null, 2))
-    //     },
-    // })
+    const handleChange = (e) => {
+        setFormState({
+            ...formState,
+            [e.target.name]: e.target.value
+        })
+    }
 
 
-    const createUser = (e) => {
-        e.preventDefault();
-        const newUser = { username, email, password, confirmPassword };
-        console.log("Welcome", newUser);
-    };
+    const validateName = () => { 
+    if (formState.username.length < 3){
+        setUsernameError('Username Must be longer than 3 characters.')
+    } else{
+        setUsernameError(null);
+    }
+    }
 
-    const formMessage = () => {
-        if (username < 3) {
-            return "Username must be greater than 2 characters";
-        } 
-    };
-    const formMessageEmail = () => {
-        if (email < 5) {
-            return "Email must be greater than 5 characters";
-        } 
-    };
-    const formMessagePassword = () => {
-        if (password < 8) {
-            return "Password must be greater than 8 characters";
-        } 
-    };
-    const formMessageConfirmPassword = () => {
-        if (confirmPassword < 8) {
-            return "Password must be greater than 8 characters";
-        } 
-    };
+    const validateEmail = () => { 
+        if (formState.email.length < 5){
+            setEmailError('Email Must be longer than 5 characters.')
+        } else{
+            setEmailError(null);
+        }
+        }
+
+    const validatePassword = () => { 
+        if (formState.password.length < 5){
+            setPasswordError('Password Must be longer than 8 characters.')
+        } else{
+            setPasswordError(null);
+        }
+        }
+        const validateConfirmPassword = () => { 
+            if (formState.password.length < 5){
+                setConfirmPasswordError('Password Must be longer than 8 characters.')
+            } else{
+                setConfirmPasswordError(null);
+            }
+            }
+
+    // const createUser = (e) => {
+    //     e.preventDefault();
+    //     const newUser = { username, email, password, confirmPassword };
+    //     console.log("Welcome", newUser);
+    // };
+
+    // const formMessage = () => {
+    //     if (username < 3) {
+    //         return "Username must be greater than 2 characters";
+    //     } 
+    // };
+    // const formMessageEmail = () => {
+    //     if (email < 5) {
+    //         return "Email must be greater than 5 characters";
+    //     } 
+    // };
+    // const formMessagePassword = () => {
+    //     if (password < 8) {
+    //         return "Password must be greater than 8 characters";
+    //     } 
+    // };
+    // const formMessageConfirmPassword = () => {
+    //     if (confirmPassword < 8) {
+    //         return "Password must be greater than 8 characters";
+    //     } 
+    // };
     const formMessageConfirmPasswordMatch = () => {
-        if (password !== confirmPassword ) {
+        if (formState.password !== formState.confirmPassword ) {
             return "Password must match";
         } 
     };
 
-    const ValidateEmail = (inputText) => {
-        const mailformat = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-        if(inputText.value.match(mailformat))
-        {
-            alert("Valid email Address!");
-            document.form1.text1.focus();
-            return true
-        }
-        else
-        {
+    // const ValidateEmail = (inputText) => {
+    //     const mailformat = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    //     if(inputText.value.match(mailformat))
+    //     {
+    //         alert("Valid email Address!");
+    //         document.form1.text1.focus();
+    //         return true
+    //     }
+    //     else
+    //     {
 
-            alert("You have entered an invalid email adress!")
-            document.form1.text1.focus();
-            return (false);
-        }
-    }
+    //         alert("You have entered an invalid email adress!")
+    //         document.form1.text1.focus();
+    //         return (false);
+    //     }
+    // }
 
-    // const validateEmail = () => {
-    //     if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test($('#email').val())) { /* return true */ }
+
+    // const initialState = {
+    //     username: {
+    //         value: '',
+    //         error: null
+    //     }
     // };
-
-
-    const initialState = {
-        username: {
-            value: '',
-            error: null
-        }
-        // email: {
-        //     value: '',
-        //     error: null
-        // },
-        // password: {
-        //     value: '',
-        //     error: null
-        // }
-
-    };
 
 
     return (
         <>
             <div className='container p-5'>
-                <form onSubmit={createUser}>
+                <form >
+                {/* onSubmit={createUser} */}
                     <div>
                         <label>Username: </label>
-                        <input className='form-control' type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
-                        <p className='text-danger'>{formMessage()}</p>  
-                        {/* {initialState.username.error !== null && (
-                            <p className='text-danger'>{initialState.username.error}</p>
-                        )} */}
+                        <input className='form-control' type="text" name='username' id='username' onChange={(e) => handleChange(e)} value={formState.username} onBlur={validateName} />
+                        {
+                            usernameError && 
+                            <span className="text-danger">{ usernameError }</span>
+                        }
                     </div>
-                    {/* <div>
-                        <label for="email">Email Address: </label>
-                        <input id='email' name='email' className='form-control' type="email" onChange={formik.createUser} value={formik.values.email} />
-                        {formik.touched.email && formik.errors.email && (
-                            <span>{formik.errors.email}</span>
-                            )}
-                    </div> */}
                     <div>
                         <label for="email">Email Address: </label>
-                        <input id='email' name='email' className='form-control' type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
-                        <p className='text-danger'>{formMessageEmail()}</p>  
+                        <input id='email' name='email' className='form-control' type="email" onChange={(e) => handleChange(e)} value={formState.email} onBlur={validateEmail} />
+                        {/* <p className='text-danger'>{formMessageEmail()}</p>   */}
+                        {
+                            emailError && 
+                            <span className="text-danger">{ emailError }</span>
+                        }
                     </div>
                     <div>
                         <label>Password: </label>
-                        <input className='form-control' type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-                        <p className='text-danger'>{formMessagePassword()}</p>  
+                        <input className='form-control' name='password' id='password' type="password" onChange={(e) => handleChange(e)} value={formState.password} onBlur={validatePassword} />
+                        {/* <p className='text-danger'>{formMessagePassword()}</p>   */}
+                        {
+                            passwordError && 
+                            <span className="text-danger">{ passwordError }</span>
+                        }
 
                     </div>
                     <div>
                         <label>Confirm Password: </label>
-                        <input className='form-control' type="password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
-                        <p className='text-danger'>{formMessageConfirmPassword()}</p>  
+                        <input className='form-control' name='confirmPassword' id='confirmPassword' type="password" onChange={(e) => handleChange(e)} value={formState.confirmPassword} onBlur={validateConfirmPassword} />
+                        {
+                            confirmPasswordError && 
+                            <span className="text-danger">{ confirmPasswordError }</span>
+                        }
                         <p className='text-danger'>{formMessageConfirmPasswordMatch()}</p>  
-
-
                     </div>
-                    <input className='btn btn-primary' type="submit" value="Create User" />
+                    <div className="d-flex">
+                        <input className='btn btn-primary' type="submit" value="Create User" />
+                    </div>
                 </form>
 
                 <div className='card border border-dark d-flex justify-content-center align-items-center'>
                     <h5 className='card-header bg-dark text-white'>Your Form Data</h5>
                     <div className="card-body">
-                        <div>Username: {username}</div>
-                        <div>Email: {email}</div>
-                        <div>Password: {password}</div>
-                        <div>Confirm Password: {confirmPassword}</div>
+                        <div>Username: {formState.username}</div>
+                        <div>Email: {formState.email}</div>
+                        <div>Password: {formState.password}</div>
+                        <div>Confirm Password: {formState.confirmPassword}</div>
                     </div>
                 </div>
             </div>
