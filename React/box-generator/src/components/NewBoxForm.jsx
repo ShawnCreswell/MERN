@@ -29,7 +29,7 @@ const MessageForm = (props) => {
                                 <h1>Add Color</h1>
                             </div>
                             <div className="card-body d-flex justify-content-center align-itmes-center">
-                            <input type="text" onChange={(e)=>setColor(e.target.value)} value={color}/>
+                            <input type="color" onChange={(e)=>setColor(e.target.value)} value={color}/>
                             <input type="number" min="100" onChange={(e)=>setSize(e.target.value)} value={size}/>
                                 
                                 {/* <textarea

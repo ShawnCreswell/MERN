@@ -9,9 +9,9 @@ import styles from './components/box.css'
 
 
 function App() {
-  const [newColor, setNewColor] = useState("");
-  const [newSize, setNewSize] = useState(100);
   const [boxes, setBoxes] = useState([]);
+  const [newColor, setNewColor] = useState(""); //BoxForm
+  const [newSize, setNewSize] = useState(100); //BoxForm
 
   const handleNewBox = (event) => {
     event.preventDefault();
@@ -31,21 +31,21 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-center align-items-center">
       <div className="row">
         <div className="col">
-          <div className='card'>
+          <div className='card d-flex'>
             <div className="card-header">
               <h1>Create Box</h1>
             </div>
-            <div className="card-body">
+            <div className="card-body d-flex  ">
               <form onSubmit={(event) => { handleNewBox(event); }}>
                 <div>
                   <label>Color: </label>
                   <input
                   className='form-control'
                     onChange={(event) => { setNewColor(event.target.value) }}
-                    type="text"
+                    type="color"
                     value={newColor}
                   />
                 </div>
@@ -65,7 +65,8 @@ function App() {
               </form>
             </div>
 
-            <div className={styles.container}>
+            <div className='d-flex' >
+            {/* {styles.container} */}
               {
                 boxes.map((box, index) => {
 
@@ -80,7 +81,6 @@ function App() {
               }
             </div>
           </div>
-
         </div>
       </div>
     </div>
