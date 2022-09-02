@@ -1,27 +1,11 @@
-import react, { useState } from 'react';
+const Color = (props) => {
 
-
-const MessageDisplay = (props) => {
     return (
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <div className="card">
-                            <div className="card-header text-center">
-                                <h1>Current Message</h1>
-                            </div>
-                            <div className="card-body d-flex justify-content-center align-itmes-center">
-                                <pre>{props.message}</pre>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
+
+        <div style={{ backgroundColor: props.box.color, width: props.box.size + 'px', height: props.box.size + 'px' }}></div>
+
+
     );
 };
 
-export default MessageDisplay;
-
+export default Color;
