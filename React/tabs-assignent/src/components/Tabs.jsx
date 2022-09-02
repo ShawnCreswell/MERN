@@ -28,7 +28,7 @@ const Tabs = (props) => {
       <div className="card m-5">
         <div className="card-header">
           <div className="tab-btn">
-            <div className="d-flex justify-content-evenly">
+            <div className="d-flex justify-content-evenly nav-tabs">
               {tabs.map((tab, index) => (
                 <button
                   value={index}
