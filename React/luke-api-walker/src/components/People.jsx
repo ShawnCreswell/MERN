@@ -1,34 +1,40 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
-import {useParams} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+// import React, { useEffect} from "react";
 
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
+const People = (props) => {
+  const { id } = useParams();
+  const [person, setPerson] = useState(null);
+  // const person = person.find(p => p.id === id)
 
-function People(props) {
-    
-    const {id} = useParams();
-    // const people = people.find(p => p.id === id)
-    const [person, setPerson] = useState('');
+  useEffect(() => {
+    axios
+      .get(`https://swapi.dev/api/people/${id}`)
+      .then((response) => {
+        console.log(response.data)
+        setPerson(response.data)
 
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
 
-    useEffect(() => {
-        axios.get(`https://swapi.dev/api/people/${id}`)
-        .then( response => console.log(response.data))
-        .then( response => setPerson(response.data))
-        .catch( err => console.log(err));
-
-    }, [id]);
-
-    return (
-        <div>
+  return (
+    <div className="container">
+      <div className="card">
+        {person && (
+          <div className="card-body">
             <h2>Name: {person.name}</h2>
             <p>Height: {person.height}</p>
             <p>Mass: {person.mass}</p>
             <p>Hair Color: {person.hair_color}</p>
             <p>skin Color: {person.skin_color}</p>
-        </div>
-    )
-
-}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default People;

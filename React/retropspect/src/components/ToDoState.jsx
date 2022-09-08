@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+import { Outlet } from "react-router-dom";
+// import { v4 as uuidv4 } from 'uuid';
 
 const TodoState = () => {
     const [todos, setTodos] = useState([]);
@@ -11,7 +12,6 @@ const TodoState = () => {
         axios('https://jsonplaceholder.typicode.com/todos/1')
         .then(res => {   
             setTodos(res.data)
-            
         })
         .catch(err => console.log(err))
     }, [])
@@ -21,7 +21,7 @@ const TodoState = () => {
 return(
     <fieldset>
         <legend>TodoState</legend>
-    <Outlet />
+        <Outlet context={ todos } />
     </fieldset>
 )
 };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 
@@ -17,16 +17,20 @@ const Home = () => {
     <div className="container">
       <div className="row">
         <div className="col">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="">Search for:</label>
-            <select onChange={ e => setResource(e.target.value)}>
-              <option value="people">People</option>
-              <option value="planet">Planets</option>
-            </select>
-            <label>ID: </label>
-            <input type="number" onChange={ e =>setSelectedId(e.target.value)} />
-            <button> Search </button>
-          </form>
+          <div className="card">
+            <div className="card-header text-center">
+            <form onSubmit={handleSubmit}>
+              <label>Search for:</label>
+              <select onChange={ e => setResource(e.target.value)}>
+                <option value="people">People</option>
+                <option value="planets">Planets</option>
+              </select>
+              <label className="ms-4">ID: </label>
+              <input type="number" onChange={ e =>setSelectedId(e.target.value)} />
+              <button> Search </button>
+            </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
