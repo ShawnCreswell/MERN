@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 require("./server/config/mongoose.config");
-
+app.use(cors())
 // const { v4: uuidv4 } = require('uuid')
 
 // Port fort in .env
@@ -17,8 +18,8 @@ colors.enable();
 app.use(express.json(), express.urlencoded({ extended: true }));
 
 // Routes 
-const AllMyJokeRoutes = require("./server/routes/jokes.routes");
-AllMyJokeRoutes(app);
+const AllMyPersonRoutes = require("./server/routes/person.routes");
+AllMyPersonRoutes(app);
 
 
 

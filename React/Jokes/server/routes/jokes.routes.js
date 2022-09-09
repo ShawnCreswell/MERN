@@ -7,8 +7,3 @@ module.exports = app => {
   app.put("/api/jokes/update/:id", JokeController.updateExistingJoke);
   app.delete("/api/jokes/delete/:id", JokeController.deleteAnExistingJoke);
 };
-
-// const jokes = [
-
-// ]
-// modules.exports = jokes;
