@@ -20,8 +20,11 @@ module.exports.createNewJoke = (req, res) => {
 };
 
 module.exports.updateExistingJoke = (req, res) => {
-  Joke.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
-    .then(updatedJoke => res.json({ joke: updatedJoke }))
+  Joke.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    .then(updatedJoke => {
+      console.log(updatedJoke)
+      res.json({ joke: updatedJoke })
+    })
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 
