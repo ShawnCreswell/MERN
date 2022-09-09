@@ -27,7 +27,7 @@ const Home = () => {
               </select>
               <label className="ms-4">ID: </label>
               <input type="number" onChange={ e =>setSelectedId(e.target.value)} />
-              <button> Search </button>
+              <button className="btn btn-primary"> Search </button>
             </form>
             </div>
           </div>

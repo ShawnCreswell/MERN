@@ -1,10 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-// import Search from "./components/Search";
 import Home from "./components/Home";
 import People from "./components/People";
 import Planet from "./components/Planets";
-// import { useState } from "react";
-// import axios from 'axios'
 import "./lux.css";
 
 const container ={
@@ -19,8 +16,6 @@ const App = () => {
       <Routes>
         <Route path="/people/:id" element={<People />} />
         <Route path="/planets/:id" element={<Planet />} />
-        {/* <People path="/people/:id" />
-        <Planet path="/planet/:id" /> */}
 
       </Routes>
     </div>

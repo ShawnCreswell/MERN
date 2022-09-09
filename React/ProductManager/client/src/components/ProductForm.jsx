@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const PersonForm =  () => {
+const ProductForm =  () => {
   //keep track of what is being typed via useState hook
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -12,16 +12,21 @@ const PersonForm =  () => {
   const onSubmitHandler = (e) => {
     //prevent default behavior of the submit
     e.preventDefault();
-    //make a post request to create a new person
+    //make a post request to create a new product
     axios
-      .post("http://localhost:8000/api/people", {
+      .post("http://localhost:8000/api/products", {
         title,
         price,
         description,
       })
       .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+      .finally( () => {
+        setTitle("");
+        setPrice(0);
+        setDescription("");
+      })
+  }
   //onChange to update firstName and lastName
   return (
     <div className="container">
@@ -66,4 +71,4 @@ const PersonForm =  () => {
   );
 };
 
-export default PersonForm;
+export default ProductForm;

@@ -1,9 +1,9 @@
 const About = () => {
   return (
-    <fieldset>
-      <legend>About</legend>
-      <h2>About Us Page</h2>
-    </fieldset>
+  <div>
+    <h1>About Page</h1>
+    <p>Thanks for tuning into my code review</p>
+  </div>
   );
 };
 

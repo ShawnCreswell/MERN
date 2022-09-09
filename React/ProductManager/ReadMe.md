@@ -8,6 +8,8 @@
 npm install express
 npm install mongoose
 
+// if needed npm i -D nodemon as dev dependency
+
 <!-- Create new File called server.js -->
 touch server.js
 
@@ -32,6 +34,7 @@ npx create-react-app client
 
 cd Client
 npm install axios
+npm install react-router-dom
 
 <!-- Install dotenv and colors -->
 npm i dotenv colors

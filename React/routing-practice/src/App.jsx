@@ -20,7 +20,7 @@ const container = {
 }
 
 const App = () => {
-  const [heroes, setHeroes] = useState(randSuperhero({ length:10 }))
+  const [heroes, setHeroes] = useState(randSuperhero({ length:15 }))
 
   return (
     <div style={ container } >

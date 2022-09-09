@@ -1,28 +1,42 @@
 const { response } = require("express");
 const { model } = require("mongoose");
-const Person = require("../models/person.model");
+const Products  = require("../models/products.model");
 
-module.exports.index = (req, res) => {
-  res.json({
-    Person
-  })
-}
 
-module.exports.findAllPeople = (req, res) => {
-  Person.find()
-    .then(allDaPeople => res.json({ person: allDaPeople}))
+module.exports.getAllProducts = (req, res) => {
+  Products.find({})
+    .then(allDaProducts => res.json({ products: allDaProducts}))
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 
-module.exports.createPerson = (req, res) => {
+module.exports.getProducts = (request, response) => {
+  Products.findOne({_id:request.params.id})
+      .then(products => response.json(products))
+      .catch(err => response.json(err))
+}
+
+module.exports.createProducts = (req, res) => {
   const { title, price, description } = req.body;
-  Person.create({
+  Products.create({
     title,
     price,
     description
   })
-  .then(person => res.json(person))
+  .then(products => res.json(products))
   .catch(err => res.json(err));
+}
+
+
+module.exports.updateProducts = (request, response) => {
+  Products.findOneAndUpdate({_id:request.params.id}, request.body, {new:true})
+      .then(updatedProducts => response.json(updatedProducts))
+      .catch(err => response.json(err))
+}
+
+module.exports.deleteProducts = (request, response) => {
+  Products.deleteOne({ _id: request.params.id })
+      .then(deleteConfirmation => response.json(deleteConfirmation))
+      .catch(err => response.json(err))
 }
 
 

@@ -18,8 +18,8 @@ colors.enable();
 app.use(express.json(), express.urlencoded({ extended: true }));
 
 // Routes 
-const AllMyPersonRoutes = require("./server/routes/person.routes");
-AllMyPersonRoutes(app);
+const AllMyProductRoutes = require("./server/routes/products.routes");
+AllMyProductRoutes(app);
 
 
 
