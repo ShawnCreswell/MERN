@@ -4,15 +4,22 @@ const Person = require("../models/person.model");
 
 module.exports.index = (req, res) => {
   res.json({
-    message: "Hello World"
+    Person
   })
 }
 
+module.exports.findAllPeople = (req, res) => {
+  Person.find()
+    .then(allDaPeople => res.json({ person: allDaPeople}))
+    .catch(err => res.json({ message: "Something went wrong", error: err }));
+};
+
 module.exports.createPerson = (req, res) => {
-  const { firstName, lastName } = req.body;
+  const { title, price, description } = req.body;
   Person.create({
-    firstName,
-    lastName
+    title,
+    price,
+    description
   })
   .then(person => res.json(person))
   .catch(err => res.json(err));
