@@ -4,10 +4,12 @@ import "./lux.css";
 import Main from "./views/Main";
 import Detail from "./views/Detail";
 import Update from "./views/Update";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
+      <Home />
       <Routes>
         <Route path="/" element={<Navigate to={"/products"} /> } />
         <Route element={<Main />} path="/products" />

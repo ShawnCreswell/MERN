@@ -7,6 +7,11 @@
 <!-- Create Json Package -->
 npm install express
 npm install mongoose
+<!-- Install dotenv and colors -->
+npm i dotenv colors
+
+<!-- In myNewProject -->
+npm install cors
 
 // if needed npm i -D nodemon as dev dependency
 
@@ -35,9 +40,3 @@ npx create-react-app client
 cd Client
 npm install axios
 npm install react-router-dom
-
-<!-- Install dotenv and colors -->
-npm i dotenv colors
-
-<!-- In myNewProject -->
-npm install cors

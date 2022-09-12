@@ -43,6 +43,7 @@ const ProductForm =  () => {
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
+                placeholder={"Enter A Title"}
               />
             </p>
             <p>
@@ -52,6 +53,8 @@ const ProductForm =  () => {
                 type="number"
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
+                placeholder={"Price of item"}
+
               />
             </p>
             <p>
@@ -61,6 +64,8 @@ const ProductForm =  () => {
                 type="text"
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
+                placeholder={"Brief description of item"}
+
               />
             </p>
             <input type="submit" />
