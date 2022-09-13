@@ -1,16 +1,21 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./lux.css";
+import Edit from "./views/Edit";
+import Main from "./views/Main";
+import New from "./views/New";
+import Nav from "./views/Nav";
 
 function App() {
   return (
     <div className="container">
-      <div className="card">
-        <div className="card-header text-center">
-          <h1>Favorite Authors</h1>
-        </div>
-        <div className="card-body"></div>
-      </div>
+    <Nav />
+      <Routes>
+          <Route path='/' element={<Navigate to={"/author"} /> } /> 
+          <Route element={<Main />} path="/author" />
+          <Route element={<New />} path="/new" />
+          <Route element={<Edit />} path="/author/edit/:id" />
+      </Routes>
     </div>
   );
 }
