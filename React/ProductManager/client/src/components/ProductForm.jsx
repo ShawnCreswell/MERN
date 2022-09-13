@@ -19,7 +19,7 @@ const ProductForm =  () => {
         price,
         description,
       })
-      .then((res) => console.log(res))
+      .then((res) => alert(res.data.message)) //console.log(res)
       .catch((err) => console.log(err))
       .finally( () => {
         setTitle("");
@@ -65,7 +65,6 @@ const ProductForm =  () => {
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
                 placeholder={"Brief description of item"}
-
               />
             </p>
             <input type="submit" />
